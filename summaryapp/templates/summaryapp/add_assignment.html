@@ -1,0 +1,16 @@
+{% extends 'summaryapp/base.html' %} 
+{% block title %}Add assignment{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %} 
+
+{% if user.is_staff %}
+<form method="post">
+    {% csrf_token %} {{form|crispy}}
+    
+    <button type="submit" class="btn btn-success">Add</button>
+</form>
+{% else %}
+<h4>This is staff only page!</h4>
+Have a staff account? Login <a class="link" href="/login">Here!</a>
+{% endif %}
+{% endblock %}
