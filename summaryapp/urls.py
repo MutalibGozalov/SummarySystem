@@ -1,9 +1,17 @@
 from django.urls import path
+from django.conf.urls.static import static
 from . import views
+from django.conf import settings
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.dashboard, name='home'),
     path('home', views.home, name='home'),
     path('sign-up', views.sign_up, name='sign_up'),
-    # path('add_assignment', views.add_assignment, name='add_assignment'),
-]
+    path('dashboard', views.dashboard, name='dashboard'),
+    path('services/<str:pk>/', views.edit_service, name='edit_service'),
+    path('services/delete/<str:pk>/', views.delete_service, name='delete_service'),
+    path('services', views.services, name='services'),
+    path('transactions', views.transactions, name='transactions'),
+    path('summary', views.summary, name='summary'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

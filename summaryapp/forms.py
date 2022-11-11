@@ -13,9 +13,21 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ["username", "email", "password1", "password2"]
 
+# class AssignmentForm(forms.ModelForm):
+#     queryset = ServiceModel.objects.all()
+#     service = forms.ModelMultipleChoiceField(queryset = ServiceModel.objects.all(), widget= forms.CheckboxSelectMultiple)
+#     class Meta:
+#         model = AssingmentModel
+#         fields = ["employee", "service", "tip"]
+
 class AssignmentForm(forms.ModelForm):
-    queryset = ServiceModel.objects.all()
-    service = forms.ModelMultipleChoiceField(queryset = ServiceModel.objects.all(), widget= forms.CheckboxSelectMultiple)
     class Meta:
         model = AssingmentModel
         fields = ["employee", "service", "tip"]
+
+class ServiceFrom(forms.ModelForm):
+    class Meta:
+        model = ServiceModel
+        fields ='__all__'
+    
+    # name = forms.CharField(widget=forms.TextInput(attrs={'class':'put'}))

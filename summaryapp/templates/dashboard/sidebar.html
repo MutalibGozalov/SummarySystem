@@ -1,0 +1,336 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>{% block title %}Sidebar base{% endblock %}</title>
+      <meta name="robots" content="noindex, nofollow">
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+      <!-- <link href="assets/img/favicon.png" rel="icon">
+      <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+      <link href="https://fonts.gstatic.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+      <link href="assets/css/bootstrap-icons.css" rel="stylesheet">
+      <link href="assets/css/boxicons.min.css" rel="stylesheet">
+      <link href="assets/css/quill.snow.css" rel="stylesheet">
+      <link href="assets/css/quill.bubble.css" rel="stylesheet">
+      <link href="assets/css/remixicon.css" rel="stylesheet">
+      <link href="assets/css/simple-datatables.css" rel="stylesheet">
+      <link href="assets/css/style.css" rel="stylesheet"> -->
+
+      <!-- <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+      <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+      <link href="https://fonts.gstatic.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/bootstrap-icons.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/boxicons.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/quill.snow.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/quill.bubble.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/remixicon.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/simple-datatables.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"> -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+      <link href="https://drive.google.com/uc?export=view&id=1_2PQrFz30MXZkwqiwILbgz_7OFNizsvB" rel="icon">
+      <link href="https://drive.google.com/uc?export=view&id=1bH47EGwSMivzPbFZd0gc9pgAh3DPcABa" rel="apple-touch-icon">
+      <link href="https://fonts.gstatic.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link href="https://drive.google.com/uc?export=view&id=1Rzwe818ywt1p80FHesybM-hBmE7bJUyN" rel="stylesheet">
+      <link href="https://drive.google.com/uc?export=view&id=1icpW5EiT6Th9vg7w67zTRSfaT0uwcmUg" rel="stylesheet">
+      <link href="https://drive.google.com/uc?export=view&id=1tw05UgnHsMTtVTYLk4dEjcFRKFv5qPCF" rel="stylesheet">
+      <link href="https://drive.google.com/uc?export=view&id=11npQYnLVxz3L6-uh9pfuQx8ITHGNtxBI" rel="stylesheet">
+      <link href="https://drive.google.com/uc?export=view&id=1WtC85zQG1K5Hq_8-wZiUN9RklHzv6QrI" rel="stylesheet">
+      <link href="https://drive.google.com/uc?export=view&id=1fhih3ZapKAuc1FqQsqPDXy5sDSyMgWU1" rel="stylesheet">
+      <link href="https://drive.google.com/uc?export=view&id=1B669pMDhNjgKviD3_v1tMi7Wrgl8q4wm" rel="stylesheet">
+      <link href="https://drive.google.com/uc?export=view&id=1kiAG5VVnzjmcwa--z34qaNU1QjAE6LGA" rel="stylesheet">
+      <link href="https://raw.githubusercontent.com/sonukedia55/CodeNext/master/calendar/lib/bootstrap-datepicker.css" rel="stylesheet">
+
+   </head>
+   <body>
+      <header></header>
+      <div class="container">
+         <div class="col-1">
+            <aside  class="sidebar">
+               <ul class="sidebar-nav" id="sidebar-nav">
+                  <img src="https://drive.google.com/uc?export=view&id=19eEkfPPTGersP3t3_FNgFQcu2gg4G9hi" style="width: 110px; height: 110px;" class="rounded mx-auto mb-3 d-block" alt="...">
+                  <li class="nav-item"> <a class="nav-link " href="dashboard"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
+                  <li class="nav-item"> <a class="nav-link collapsed" href="services"> <i class="bi bi-person"></i> <span>Services</span> </a></li>
+                  <li class="nav-item"> <a class="nav-link collapsed" href="transactions"> <i class="bi bi-question-circle"></i> <span>Transactions</span> </a></li>
+                  <li class="nav-item"> <a class="nav-link collapsed" href="#"> <i class="bi bi-envelope"></i> <span>Barbers</span> </a></li>
+                  <li class="nav-item"> <a class="nav-link collapsed" href="/logout"> <i class="bi bi-box-arrow-in-right"></i> <span>Log Out</span> </a></li>
+               </ul>
+            </aside>
+         </div>
+      </div>
+      <div class="container-fluid" >
+        {% block content %}{% endblock %}
+      </div>
+
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>  
+        <!-- <script src="assets/js/apexcharts.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/chart.min.js"></script>
+        <script src="assets/js/echarts.min.js"></script>
+        <script src="assets/js/quill.min.js"></script>
+        <script src="assets/js/simple-datatables.js"></script>
+        <script src="assets/js/tinymce.min.js"></script>
+        <script src="assets/js/validate.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+        <script src="assets/js/ajax.js"></script> -->
+
+        <!-- <script src="{% static 'assets/js/apexcharts.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/js/chart.min.js' %}"></script>
+        <script src="{% static 'assets/js/echarts.min.js' %}"></script>
+        <script src="{% static 'assets/js/quill.min.js' %}"></script>
+        <script src="{% static 'assets/js/simple-datatables.js' %}"></script>
+        <script src="{% static 'assets/js/tinymce.min.js' %}"></script>
+        <script src="{% static 'assets/js/validate.js' %}"></script>
+         <script src="{% static 'assets/js/main.js' %}"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+        <script src="{% static 'assets/js/ajax.js' %}"></script> -->
+
+        <!-- <script src="{% static 'assets/js/main.js' %}"></script>  -->
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+        <script src="https://drive.google.com/uc?export=view&id=1S42r16CcIXRkVpTQZgaFpTkxpVI6FKlJ"></script>
+        <script src="https://drive.google.com/uc?export=view&id=1-SgwCtGfgFNAOojHfOsBoVOAiQDiLw8G"></script>
+        <script src="https://drive.google.com/uc?export=view&id=1BRC9llLe83BHa8Q0cSOum1aE-IXki8ze"></script>
+        <script src="https://drive.google.com/uc?export=view&id=1A3nVonn160sqQ9DxlzgMbAgPcrzs_FA_"></script>
+        <script src="https://drive.google.com/uc?export=view&id=10MCLT2_ml2YnpfP3C4RRAE1rinReIotW"></script>
+        <script src="https://drive.google.com/uc?export=view&id=1eaYuGP-dEvgsPcanOKyMSpZeRKWt3gJx"></script>
+        <script src="https://drive.google.com/uc?export=view&id=1evyL7TZEuxrlbVsK1Fg6grtfIWGB6tUl"></script>
+        <script src="https://drive.google.com/uc?export=view&id=1ADRMNh8YlUIcyFYkarMscgOVikgjDXZ1"></script>
+        <script src="https://drive.google.com/uc?export=view&id=1yHU7x67ZyJtpTXi-uYfAiD2ZcEHSSTgO"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+        <script src="https://drive.google.com/uc?export=view&id=1TRY6y-cONpng56NSWGkuBpKXZJTx4i_L"></script>
+         
+         <script>
+            $(function() {
+               var time_input = $("#add-form").children("div").eq(1).children("div").eq(1).children("input");
+               time_input.attr("placeholder", "0h");
+
+
+               var minute_input = $("#add-form").children("div").eq(1).children("div").eq(2).children();
+               minute_input.attr("placeholder", "0m");
+
+               var time_input = $("#post-form").children("div").eq(1).children("div").eq(1).children("input");
+               time_input.attr("placeholder", "0h");
+
+
+               var minute_input = $("#post-form").children("div").eq(1).children("div").eq(2).children();
+               minute_input.attr("placeholder", "0m");
+
+               var today = new Date();
+               var dd = String(today.getDate()).padStart(2, '0');
+               var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+               var yyyy = today.getFullYear();
+
+               today = yyyy + '-' + mm + '-' + dd;
+               this_month = yyyy + '-' + mm;
+
+               $("input[name='today']").attr('value', today);
+               $("input[name='month']").attr('value', this_month);
+
+               $("input[name='today']").attr('max', today);
+               $("input[name='month']").attr('max', this_month);
+
+               inc_dec();
+            });
+
+            function inc_dec() {
+                     var ms_b ='{{month_sum_before}}';
+                     var ds_b ='{{day_sum_before}}';
+                     var ms ='{{sum_month}}';
+                     var ds ='{{sum_day}}';
+
+                     var inc_d = Math.abs(ds-ds_b)/ds_b*100;
+                     var inc_m = Math.abs(ms-ms_b)/ms_b*100;
+                     console.log(inc_m);
+                     $("#123456").text(Math.round(inc_d) + " %");
+                     $("#1234567").text(Math.round(inc_m) + " %");
+
+                     var danger = 'text-danger small pt-1 fw-bold';
+                     var success = 'text-success small pt-1 fw-bold';
+
+                     if (+ds < +ds_b) {
+                        $("#123456").attr('class', danger);
+                        $("#123456").parent().children().eq(2).text('| decrease | $'+ ds_b);
+                     }
+                     if (+ds > +ds_b) {
+                        $("#123456").attr('class', success);
+                        $("#123456").parent().children().eq(2).text('| increase | $'+ ds_b);
+                     }
+
+                     if (+ms < +ms_b) {
+                        console.log("ms<ms_b");
+                        $("#1234567").attr('class', danger);
+                        $("#1234567").parent().children().eq(2).text('| decrease | $'+ ms_b);
+                     }
+                     if (+ms > +ms_b) {
+                        $("#1234567").attr('class', success);
+                        $("#1234567").parent().children().eq(2).text('| increase | $'+ ms_b);
+                     }
+
+
+                     neut = 'text-muted small pt-1 fw-bold';
+                     if (+ds_b == 0) {
+                        $("#123456").attr('class', neut);
+                        $("#123456").text("");
+                        $("#123456").parent().children().eq(2).text('| yestarday: $ 0');
+                     }
+                     if (+ms_b == 0) {
+                        $("#1234567").attr('class', neut);
+                        $("#1234567").text("");
+                        $("#1234567").parent().children().eq(2).text('| last month: $ 0');
+                     }
+                  }
+
+
+            $(document).on('click', '.list', function(e){
+               $("#post-form").attr("sid", $(this).attr("sid"));
+               $("input[name='name']").eq(0).val($(this).parent().parent().children().eq(0).text());
+               $("input[name='prize']").eq(0).val($(this).parent().parent().children().eq(1).text());
+               $("input[name='time']").eq(0).val($(this).parent().parent().children().eq(2).text().substring(0,1));
+               $("#post-form").children("div").eq(1).children("div").eq(2).children().val($(this).parent().parent().children().eq(2).text().substring(2,4));
+
+               $("#delete-form").attr("sid", $(this).attr("sid"));
+               $("input[name='name']").eq(2).val($(this).parent().parent().children().eq(0).text());
+            });
+
+            $(document).on('submit', '#post-form', function(e){
+               e.preventDefault();
+
+               $.ajax({
+                  type:'POST',
+                  url:'services/'+ $(this).attr('sid') + '/',
+                  data: {
+                        Hour: $("input[name='time']").val(),
+                        Minute: $("input[name='time2']").val(),
+                        Name: $("input[name='name']").val(),
+                        Prize: $("input[name='prize']").val(),
+                        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                  },
+                  success: function(response) {
+                        location.reload();
+                  }
+               });
+            });
+
+            $(document).on('submit', '#delete-form', function(e){
+               e.preventDefault();
+
+               $.ajax({
+                  type:'POST',
+                  url:'services/delete/'+ $(this).attr('sid') + '/',
+                  data: {
+                        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                  },
+                  success: function(response) {
+                        location.reload();
+                  }
+               });
+            });
+
+            $(document).on('submit', '#add-form', function(e){
+               e.preventDefault();
+
+               var time_input = $(this).children("div").eq(1).children("div").eq(1).children("input");
+               var hour = time_input.val();
+               // console.log(hour);
+
+               var minute_input = $(this).children("div").eq(1).children("div").eq(2).children();
+               var minute = minute_input.val();
+
+               console.log("minute: " +minute);
+               console.log("hour: " +hour);
+
+               if (minute == "") {
+                  minute = "0";
+               }
+
+               if (hour == "") {
+                  hour = "0";
+               }
+               
+               var post_time = (hour + ":" + minute + ":00");
+               console.log("post_time: " +post_time);
+               time_input.val(post_time);
+
+               // console.log(time_input.val());
+               
+               (this).submit();
+
+            });
+
+          $(document).on('change', "input[name='today']", function(e) {
+            $.ajax({
+                  type:'POST',
+                  url:'summary',
+                  data: {
+                           
+                        //2022-11-06
+                        Month: $(this).val().substring(5,7),
+                        Day: $(this).val().substring(8,10),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                  },
+                  success: function(response) {
+                     $("#day_sum").text($("#day_sum").text()[0] + response.day_sum);
+                  }
+               });
+           
+          });
+
+          $(document).on('change', "input[name='month']", function(e) {
+            $.ajax({
+                  type:'POST',
+                  url:'summary',
+                  data: {
+                           
+                        //2022-11-06
+                        Month: $(this).val().substring(5,7),
+                        Day: '01',//$(this).val().substring(8,10),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                  },
+                  success: function(response) {
+                     $("#month_sum").text($("#month_sum").text()[0] + response.month_sum);
+                  }
+               });
+           
+          });
+
+
+         const select = (el, all = false) => {
+            el = el.trim()
+            if (all) {
+               return [...document.querySelectorAll(el)]
+            } else {
+               return document.querySelector(el)
+            }
+         }
+         
+         $(document).on('click', '.toggle-sidebar-btn', function(e) {
+            console.log("in click");
+            select('body').classList.toggle("toggle-sidebar");
+         })
+
+         // $(document).on('click', 'section', function(e) {
+         //    if (!select('body').classList.contains("toggle-sidebar")){
+         //       select('body').classList.toggle("toggle-sidebar");
+         //    }
+         // })
+         
+         // function myFunction() {
+         //    var element = document.getElementById("myDIV");
+         //    console.log("in click");
+         //    select('body').classList.toggle("toggle-sidebar");
+         // }
+         </script>
+    </body>
+    </html>

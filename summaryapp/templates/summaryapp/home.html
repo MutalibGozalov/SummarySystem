@@ -34,9 +34,7 @@
                     <div class="card-body d-flex flex-row justify-content-between">
                     
                         <div>
-                            {% for service in assignment.service.all %}
-                            <h5>{{ service }}: {{service.prize}} AZN</h5>
-                            {% endfor %}
+                            <h5>{{ assignment.service }}: {{assignment.service.prize}} AZN</h5>
                             Tip: {{ assignment.tip }} AZN
                         </div>
                         <h4 class="prize">
@@ -58,8 +56,6 @@
                 {{ sum|json_script:'sum' }}
                 {{ sum_month|json_script:'sum_month' }}
                 <script>
-                    centText('beforeend', tot_month.toString()+ " AZN");///
-
                     var sum = JSON.parse(document.getElementById('sum').textContent);
                     
                     function insertAssignmentPrizes(){
@@ -80,7 +76,8 @@
                         tot += +element;
                         });
 
-                        total.insertAdjacentText('beforeend', tot.toString()+ " AZN");
+                        tot_round = Math.round(tot * 100)/100;
+                        total.insertAdjacentText('beforeend', tot_round.toString()+ " AZN");  
                     }
 
                     function insertTot_month(){
@@ -92,7 +89,8 @@
                             tot_month += +element;
                         });
 
-                        this_month.insertAdjacentText('beforeend', tot_month.toString()+ " AZN");
+                        tot_round = Math.round(tot_month * 100)/100;
+                        this_month.insertAdjacentText('beforeend', tot_round.toString()+ " AZN");
                     }
 
                     
