@@ -1,13 +1,13 @@
 {% extends 'dashboard/sidebar.html' %}
-{% block title %} Dashboard - Admin Bootstrap Template {% endblock %}
-
+{% block title %} Dashboard {% endblock %}
+{% load tags %}
 {% block content %}
 <main id="main" class="main">
     <div class="pagetitle">
        <h1>Good morning, Admin</h1>
        Nice to see you again!
     </div>
-    <button class="toggle-sidebar-btn" >Try it</button>
+    <button class="btn btn-primary toggle-sidebar-btn" ><i class="bi bi-arrow-left-right"></i></button>
     <section class="section dashboard">
        <div class="row">
           <div class="col-lg-6">
@@ -60,7 +60,7 @@
                            {% for assignment in assignments %}
                            <tr>
                               <td>{{assignment.service}}</td>
-                              <td>{{assignment.service.time}}</td>
+                              <td>{{assignment.service.time|to_hm}}</td>
                               <td>{{assignment.created_at|date:"SHORT_DATE_FORMAT"}}</td>
                               <td>${{assignment.service.prize}}</td>
                            </tr>
@@ -86,7 +86,16 @@
                       <div id="reportsChart"></div>
                       {{ sum|json_script:'sum' }}
                       <script>document.addEventListener("DOMContentLoaded", () => {
-                        var sum = JSON.parse(document.getElementById('sum').textContent);
+                         var sum = JSON.parse(document.getElementById('sum').textContent);
+                         var currentYear = new Date().getFullYear();
+                         var currentMonth = new Date().getMonth() + 1;
+
+                         var lst = [];
+                         for (let i = 6; i >= 0; i--) {
+                           dt=currentYear.toString() +"-"+ (currentMonth-i).toString();
+                           lst.push(dt)
+                         }
+                         //console.log(lst);
                          new ApexCharts(document.querySelector("#reportsChart"), {
                            series: [{
                              name: 'Sales',
@@ -104,7 +113,7 @@
                              height: 350,
                              type: 'area',
                              toolbar: {
-                               show: false
+                               show: true
                              },
                            },
                            markers: {
@@ -121,7 +130,7 @@
                              }
                            },
                            dataLabels: {
-                             enabled: false
+                             enabled: true
                            },
                            stroke: {
                              curve: 'smooth',
@@ -129,7 +138,7 @@
                            },
                            xaxis: {
                              type: 'datetime',
-                             categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                             categories: lst//["2018-05", "2018-06", "2018-07", "2018-08", "2018-09", "2018-10", "2018-11", "2018-12"]//["2018-05-19T00:00:00.000Z", "2018-06-19T01:30:00.000Z", "2018-07-19T02:30:00.000Z", "2018-08-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-10-19T05:30:00.000Z", "2018-11-19T06:30:00.000Z"]
                            },
                            tooltip: {
                              x: {

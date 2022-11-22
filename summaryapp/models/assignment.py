@@ -3,7 +3,6 @@ from summaryapp.models import ServiceModel, BarberModel
 
 class AssingmentModel(models.Model):
     employee = models.ForeignKey(BarberModel, on_delete=models.CASCADE)
-    # service = models.ManyToManyField(ServiceModel, related_name='service')
     service = models.ForeignKey(ServiceModel, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     tip = models.DecimalField(max_digits = 4, decimal_places = 2)

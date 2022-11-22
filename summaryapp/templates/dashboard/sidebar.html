@@ -8,7 +8,7 @@
       <meta name="robots" content="noindex, nofollow">
       <meta content="" name="description">
       <meta content="" name="keywords">
-      <!-- <link href="assets/img/favicon.png" rel="icon">
+      <link href="assets/img/favicon.png" rel="icon">
       <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
       <link href="https://fonts.gstatic.com" rel="preconnect">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -19,9 +19,9 @@
       <link href="assets/css/quill.bubble.css" rel="stylesheet">
       <link href="assets/css/remixicon.css" rel="stylesheet">
       <link href="assets/css/simple-datatables.css" rel="stylesheet">
-      <link href="assets/css/style.css" rel="stylesheet"> -->
+      <link href="assets/css/style.css" rel="stylesheet">
 
-      <!-- <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+      <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
       <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
       <link href="https://fonts.gstatic.com" rel="preconnect">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -32,7 +32,8 @@
       <link href="{% static 'assets/css/quill.bubble.css' %}" rel="stylesheet">
       <link href="{% static 'assets/css/remixicon.css' %}" rel="stylesheet">
       <link href="{% static 'assets/css/simple-datatables.css' %}" rel="stylesheet">
-      <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"> -->
+      <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+      <!-- //////////////////////////////////////////////////////////////////////////////////// -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
       <link href="https://drive.google.com/uc?export=view&id=1_2PQrFz30MXZkwqiwILbgz_7OFNizsvB" rel="icon">
@@ -49,6 +50,17 @@
       <link href="https://drive.google.com/uc?export=view&id=1kiAG5VVnzjmcwa--z34qaNU1QjAE6LGA" rel="stylesheet">
       <link href="https://raw.githubusercontent.com/sonukedia55/CodeNext/master/calendar/lib/bootstrap-datepicker.css" rel="stylesheet">
 
+      <style>
+         .toggle-sidebar-btn {
+            position: absolute;
+            right: 40px;
+            top: 20px;
+         }
+
+         .toogle-sidebar {
+            font-size: 85%;
+         }
+      </style>
    </head>
    <body>
       <header></header>
@@ -57,10 +69,10 @@
             <aside  class="sidebar">
                <ul class="sidebar-nav" id="sidebar-nav">
                   <img src="https://drive.google.com/uc?export=view&id=19eEkfPPTGersP3t3_FNgFQcu2gg4G9hi" style="width: 110px; height: 110px;" class="rounded mx-auto mb-3 d-block" alt="...">
-                  <li class="nav-item"> <a class="nav-link " href="dashboard"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
+                  <li class="nav-item"> <a class="nav-link collapsed" href="dashboard"> <i class="bi bi-grid"></i> <span>Dashboard</span> </a></li>
                   <li class="nav-item"> <a class="nav-link collapsed" href="services"> <i class="bi bi-person"></i> <span>Services</span> </a></li>
                   <li class="nav-item"> <a class="nav-link collapsed" href="transactions"> <i class="bi bi-question-circle"></i> <span>Transactions</span> </a></li>
-                  <li class="nav-item"> <a class="nav-link collapsed" href="#"> <i class="bi bi-envelope"></i> <span>Barbers</span> </a></li>
+                  <li class="nav-item"> <a class="nav-link collapsed" href="barbers"> <i class="bi bi-envelope"></i> <span>Barbers</span> </a></li>
                   <li class="nav-item"> <a class="nav-link collapsed" href="/logout"> <i class="bi bi-box-arrow-in-right"></i> <span>Log Out</span> </a></li>
                </ul>
             </aside>
@@ -71,7 +83,7 @@
       </div>
 
       <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>  
-        <!-- <script src="assets/js/apexcharts.min.js"></script>
+        <script src="assets/js/apexcharts.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/chart.min.js"></script>
         <script src="assets/js/echarts.min.js"></script>
@@ -81,9 +93,9 @@
         <script src="assets/js/validate.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
-        <script src="assets/js/ajax.js"></script> -->
-
-        <!-- <script src="{% static 'assets/js/apexcharts.min.js' %}"></script>
+        <script src="assets/js/ajax.js"></script>
+<!-- ///////////////////////////////////////////////////////////////////////////////// -->
+        <script src="{% static 'assets/js/apexcharts.min.js' %}"></script>
         <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'assets/js/chart.min.js' %}"></script>
         <script src="{% static 'assets/js/echarts.min.js' %}"></script>
@@ -91,11 +103,10 @@
         <script src="{% static 'assets/js/simple-datatables.js' %}"></script>
         <script src="{% static 'assets/js/tinymce.min.js' %}"></script>
         <script src="{% static 'assets/js/validate.js' %}"></script>
-         <script src="{% static 'assets/js/main.js' %}"></script> 
+        <script src="{% static 'assets/js/main.js' %}"></script> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
-        <script src="{% static 'assets/js/ajax.js' %}"></script> -->
-
-        <!-- <script src="{% static 'assets/js/main.js' %}"></script>  -->
+        <script src="{% static 'assets/js/ajax.js' %}"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
@@ -142,6 +153,39 @@
                $("input[name='month']").attr('max', this_month);
 
                inc_dec();
+            });
+
+            $(function() {
+               $.ajax({
+                  type:'GET',
+                  url:'sidebar',
+                  success: function(response) {
+                     console.log(response);
+                     navs = $( '.sidebar .sidebar-nav li' );
+                     titles = $('.card-title');
+                     
+
+                     sc = "<b class='ms-5 px-1 text-warning'>"+ response['sc'] +"</b>"
+                     ac = "<b class='ms-2 px-1 text-warning'>"+ response['ac'] +"</b>"
+                     bc = "<b class='ms-5 px-1 text-warning'>"+ response['bc'] +"</b>"
+                     $(navs['1']).children().eq(0).append(sc);
+                     $(navs['2']).children().eq(0).append(ac);
+                     $(navs['3']).children().eq(0).append(bc);
+
+                     if (response['ac'] >99) {
+                        $(navs['2']).children().eq(0).children().eq(2).text("99+");
+                     }
+
+
+                     if ($('title').text().trim() == 'Services') {
+                        $(titles['0']).append(sc);
+                     } else if($('title').text().trim() == 'Transactions') {
+                        $(titles['0']).append(ac);
+                     } else if($('title').text().trim() == 'Barbers') {
+                        $(titles['0']).append(bc);
+                     }
+                  }
+               });
             });
 
             function inc_dec() {
@@ -193,20 +237,52 @@
                   }
 
 
-            $(document).on('click', '.list', function(e){
-               $("#post-form").attr("sid", $(this).attr("sid"));
+            $(document).on('click', '.list-edit', function(e){
+               $("#edit-form").attr("sid", $(this).attr("sid"));
                $("input[name='name']").eq(0).val($(this).parent().parent().children().eq(0).text());
-               $("input[name='prize']").eq(0).val($(this).parent().parent().children().eq(1).text());
+               $("input[name='prize']").eq(0).val($(this).parent().parent().children().eq(1).text());//$(this).parent().parent().children().eq(1).text()
                $("input[name='time']").eq(0).val($(this).parent().parent().children().eq(2).text().substring(0,1));
-               $("#post-form").children("div").eq(1).children("div").eq(2).children().val($(this).parent().parent().children().eq(2).text().substring(2,4));
+               $("#edit-form").children("div").eq(1).children("div").eq(2).children().val($(this).parent().parent().children().eq(2).text().substring(2,4));
+               console.log(  $("input[name='prize']").eq(0).val());
+            });
 
+            $(document).on('click', '.list-delete', function(e){
                $("#delete-form").attr("sid", $(this).attr("sid"));
                $("input[name='name']").eq(2).val($(this).parent().parent().children().eq(0).text());
             });
 
-            $(document).on('submit', '#post-form', function(e){
-               e.preventDefault();
+            $(document).on('click', '.list-delete-barber', function(e){
+               $("#delete-barber").attr("sid", $(this).attr("sid"));
+               $("input[name='name']").eq(1).val($(this).parent().parent().children().eq(0).text());
+            });
 
+
+            $(document).on('submit', '#edit-form', function(e){
+               e.preventDefault();
+              
+               var time_input = $(this).children("div").eq(1).children("div").eq(1).children("input");
+               var hour = time_input.val();
+               // console.log(hour);
+
+               var minute_input = $(this).children("div").eq(1).children("div").eq(2).children();
+               var minute = minute_input.val();
+
+               console.log("minute: " +minute);
+               console.log("hour: " +hour);
+
+               if (minute == "") {
+                  minute = "0";
+               }
+
+               if (hour == "") {
+                  hour = "0";
+               }
+               
+               var post_time = (hour + ":" + minute + ":00");
+               console.log("post_time: " +post_time);
+               time_input.val(hour);
+               minute_input.val(minute);
+              
                $.ajax({
                   type:'POST',
                   url:'services/'+ $(this).attr('sid') + '/',
@@ -215,21 +291,6 @@
                         Minute: $("input[name='time2']").val(),
                         Name: $("input[name='name']").val(),
                         Prize: $("input[name='prize']").val(),
-                        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-                  },
-                  success: function(response) {
-                        location.reload();
-                  }
-               });
-            });
-
-            $(document).on('submit', '#delete-form', function(e){
-               e.preventDefault();
-
-               $.ajax({
-                  type:'POST',
-                  url:'services/delete/'+ $(this).attr('sid') + '/',
-                  data: {
                         csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
                   },
                   success: function(response) {
@@ -263,11 +324,42 @@
                console.log("post_time: " +post_time);
                time_input.val(post_time);
 
-               // console.log(time_input.val());
+               console.log(time_input.val());
                
                (this).submit();
 
             });
+
+            $(document).on('submit', '#delete-form', function(e){
+               e.preventDefault();
+
+               $.ajax({
+                  type:'POST',
+                  url:'services/delete/'+ $(this).attr('sid') + '/',
+                  data: {
+                        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                  },
+                  success: function(response) {
+                        location.reload();
+                  }
+               });
+            });
+
+            $(document).on('submit', '#delete-barber', function(e){
+               e.preventDefault();
+
+               $.ajax({
+                  type:'POST',
+                  url:'barbers/delete/'+ $(this).attr('sid') + '/',
+                  data: {
+                        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                  },
+                  success: function(response) {
+                        location.reload();
+                  }
+               });
+            });
+
 
           $(document).on('change', "input[name='today']", function(e) {
             $.ajax({
@@ -318,19 +410,88 @@
          $(document).on('click', '.toggle-sidebar-btn', function(e) {
             console.log("in click");
             select('body').classList.toggle("toggle-sidebar");
-         })
+         });
 
-         // $(document).on('click', 'section', function(e) {
-         //    if (!select('body').classList.contains("toggle-sidebar")){
-         //       select('body').classList.toggle("toggle-sidebar");
-         //    }
-         // })
+         $( '.sidebar .sidebar-nav a' ).on('click', function () {
+            console.log('nav clicked');
+            $( '.sidebar .sidebar-nav' ).find( 'a:not(.collapsed)').addClass( 'collapsed' );
+            $( this ).removeClass( 'collapsed' );
+         });
+
+         $(function() {
+            navs = $( '.sidebar .sidebar-nav span' );
+            nav_list = Object.values(navs);
+            title = $( 'title' ).text().trim();
+
+            $.each( navs, function( key, value ) {
+               
+               console.log(title.substring(0,9));
+
+               if ($(value).parent().text().trim() == title || $(value).parent().text().trim() == title.substring(0,9))
+               {
+                  $(value).parent().removeClass( 'collapsed' );
+               } 
+               else if(!$(value).parent().hasClass('collapsed')) {
+                  $(value).parent().addClass('collapsed');
+               }
+            });
+         });
+
+
+         var trlist = [];
+         $(function () {
+
+            $.ajax({
+               type:'get',
+               url:'transactionsfilter',
+               success: function(response){
+                  trlist = Object.values(response);
+               }
+            });
+         });
          
-         // function myFunction() {
-         //    var element = document.getElementById("myDIV");
-         //    console.log("in click");
-         //    select('body').classList.toggle("toggle-sidebar");
-         // }
+         function orderBy_list(index) {
+                     trlist[0].sort(function(a, b){
+                        if (index == 0) {
+                           return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+                        } else {
+                           return (+a[index] === +b[index] ? 0 : (+b[index] < +a[index] ? -1 : 1));
+                        }
+                     });
+                     $("#tr_table").html("");
+                     trlist.forEach(transactions => {
+                     transactions.forEach(col=> {
+                        appendToTable(col);
+                     });
+                  });
+                  }
+
+         function appendToTable(transaction) {
+            var duration = transaction[1].toString();
+            var hh = duration.substring(5,6)+"h";
+            var mm = duration.substring(7,9)+"min";
+            duration = hh + " " + mm;
+            $("#tr_table").append(`
+               <tr>
+                  <td>${transaction[0]}</td>
+                  <td>${duration}</td>
+                  <td>${transaction[2].toString().substring(0,10)}</td>
+                  <td>$${transaction[3]}</td>
+                  <td>$${transaction[4]}</td>
+               </tr>
+            `);
+         }
          </script>
+           
+           
+// <!--            
+//            {% for assignment in assignments %}
+//            <tr>
+//               <td>{{assignment.service}}</td>
+//               <td>{{assignment.service.time}}</td>
+//               <td>{{assignment.created_at}}</td>
+//               <td>${{assignment.service.prize}}</td>
+//            </tr>
+//            {% endfor %} -->
     </body>
     </html>

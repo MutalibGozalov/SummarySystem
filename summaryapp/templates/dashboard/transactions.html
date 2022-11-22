@@ -1,27 +1,36 @@
 {% extends 'dashboard/sidebar.html' %}
-{% block title %} All Transactions {% endblock %}
+{% block title %} Transactions {% endblock %}
 {% load tags %}
 {% block content %}
       <main id="main" class="main">
          <div class="pagetitle mt-3">
             <h1>Transactions of Legacy Barbershop</h1>
          </div>
+         <button class="btn btn-primary toggle-sidebar-btn" ><i class="bi bi-arrow-left-right"></i></button>
          <div class="row">
             <div class="col-lg-6">
                <div class="card mt-5"> <!-- Recent transactions-->
                   <div class="card-body">
-                     <h5 class="card-title">All Transactions</h5>
+                     <h5 class="card-title">All Transactions:</h5>
                      <table class="table table-hover">
-                        <tbody>
+                        <tr>
+                           <th>Service</th>
+                           <th>Time</th>
+                           <th>Added</th>
+                           <th>Tip</th>
+                           <th>Outcome</th>
+                        </tr>
+                        <tbody id="tr_table">
                            {% for assignment in assignments %}
                            <tr>
                               <td>{{assignment.service}}</td>
-                              <td>{{assignment.service.time|to_str}}</td>
+                              <td>{{assignment.service.time|to_hm}}</td>
                               <td>{{assignment.created_at|date:"SHORT_DATE_FORMAT"}}</td>
-                              <td>${{assignment.service.prize}}</td>
+                              <td>${{assignment.tip}}</td>
+                              <td>${{assignment|outcome}}</td>
                            </tr>
                            {% endfor %}
-                           </tbody>
+                        </tbody>
                      </table>
                   </div>
                </div>     
@@ -30,12 +39,12 @@
                <div class="row"> <!--Delete service-->
                   <div class="card">
                      <div class="card-body">
-                        <h5 class="card-title">Delete service</h5>
+                        <h5 class="card-title">Filter transactions by:</h5>
                         <div class="row text-center text-light justify-content-between">
                            <div class="col text-dark font-weight-bold py-1 center">Filter</div>
-                           <div class="col bg-primary py-1 border rounded border-primary">Services</div>
-                           <div class="col bg-primary py-1 mx-3 border rounded border-primary">Tips</div>
-                           <div class="col bg-primary py-1 border rounded border-primary">Outcome</div>
+                           <div class="col bg-primary py-1 border rounded border-primary" style="cursor: pointer;" onclick="orderBy_list(0)">Services</div>
+                           <div class="col bg-primary py-1 mx-3 border rounded border-primary" style="cursor: pointer;" onclick="orderBy_list(3)">Tips</div>
+                           <div class="col bg-primary py-1 border rounded border-primary" style="cursor: pointer;" onclick="orderBy_list(4)">Outcome</div>
                         </div>
                      </div>
                  </div>
@@ -46,12 +55,12 @@
                         <h5 class="card-title">Summarize</h5>
                         <div class="row align-items-center justify-content-between">
                            {% csrf_token %} 
-                           <div class="col-4 px-0 ms-2  border text-center rounded border-primary" ><input type="date" style="height: 40px;" class="form-control" name="today" value="" min="2020-01-01" max="" /></div>
-                           <div id="day_sum" class="col-7 border text-center rounded border-primary" style="height: 40px; padding-top: 9px;">$ 5.930</div>
+                           <div class="col-5 px-0 ms-2  border text-center rounded border-primary" ><input type="date" style="height: 40px;" class="form-control" name="today" value="" min="2020-01-01" max="" /></div>
+                           <div id="day_sum" class="col-6 border text-center rounded border-primary" style="height: 40px; padding-top: 9px;">$ 5.930</div>
                         </div>
                         <div class="row align-items-center pt-3 justify-content-between">
-                           <div class="col-4 px-0 ms-2 border text-center rounded border-primary"><input type='month' style="height: 40px;" class="form-control" name="month" value="2022-11" min="2010-01" max="" /></div>
-                           <div id="month_sum" class="col-7 border text-center rounded border-primary" style="height: 40px; padding-top: 9px;">$ 44.422</div>
+                           <div class="col-5 px-0 ms-2 border text-center rounded border-primary"><input type='month' style="height: 40px;" class="form-control" name="month" value="2022-11" min="2010-01" max="" /></div>
+                           <div id="month_sum" class="col-6 border text-center rounded border-primary" style="height: 40px; padding-top: 9px;">$ 44.422</div>
                         </div>
                      </div>
                  </div>

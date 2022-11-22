@@ -121,8 +121,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/dashboard'
 LOGOUT_REDIRECT_URL = '/login'
 
-CSRF_TRUSTED_ORIGINS = ['https://b506-89-147-232-46.eu.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['https://41ae-89-147-226-152.eu.ngrok.io']
 

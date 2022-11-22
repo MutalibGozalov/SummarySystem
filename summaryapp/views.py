@@ -1,11 +1,12 @@
 
 from datetime import datetime, timedelta
+import json
 from venv import create
 from django.shortcuts import render, redirect
 from .templatetags.tags import to_str
 from summaryapp.models import assignment, service
-from .forms import RegisterForm, AssignmentForm, ServiceFrom
-from summaryapp.models import AssingmentModel, ServiceModel
+from .forms import RegisterForm, AssignmentForm, ServiceFrom, BarberFrom
+from summaryapp.models import AssingmentModel, ServiceModel, BarberModel
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -119,14 +120,68 @@ def dashboard(request):
         prize_month_before += assignment.tip
         sum_month_before.append(prize_month_before)
 
-    return render(request, 'dashboard/home.html', {"assignments": assignments, "sum_day": sum(sum_day), "sum_month": sum(sum_month), 'month_sum_before':sum(sum_month_before), 'day_sum_before':sum(sum_day_before), "sum": Sum})
+# ------------------------------- chart -------------------------------
+    assignments_month_before2 = AssingmentModel.objects.filter(created_at__month = (int(month)-2))
+    assignments_month_before3 = AssingmentModel.objects.filter(created_at__month = (int(month)-3))
+    assignments_month_before4 = AssingmentModel.objects.filter(created_at__month = (int(month)-4))
+    assignments_month_before5 = AssingmentModel.objects.filter(created_at__month = (int(month)-5))
+    assignments_month_before6 = AssingmentModel.objects.filter(created_at__month = (int(month)-6))
+
+    sum_month_before2 = []
+    sum_month_before3 = []
+    sum_month_before4 = []
+    sum_month_before5 = []
+    sum_month_before6 = []
+
+    prize_month_before2 = 0
+    prize_month_before3 = 0
+    prize_month_before4 = 0
+    prize_month_before5 = 0
+    prize_month_before6 = 0
+
+    for assignment in assignments_month_before2:
+        # for service in assignment.service.all():
+        prize_month_before2 += assignment.service.prize
+        prize_month_before2 += assignment.tip
+        sum_month_before2.append(prize_month_before2)
+    
+    for assignment in assignments_month_before3:
+        # for service in assignment.service.all():
+        prize_month_before3 += assignment.service.prize
+        prize_month_before3 += assignment.tip
+        sum_month_before3.append(prize_month_before3)
+
+    for assignment in assignments_month_before4:
+        # for service in assignment.service.all():
+        prize_month_before4 += assignment.service.prize
+        prize_month_before4 += assignment.tip
+        sum_month_before4.append(prize_month_before4)
+
+    for assignment in assignments_month_before5:
+        # for service in assignment.service.all():
+        prize_month_before5 += assignment.service.prize
+        prize_month_before5 += assignment.tip
+        sum_month_before5.append(prize_month_before5)
+
+    for assignment in assignments_month_before6:
+        # for service in assignment.service.all():
+        prize_month_before6 += assignment.service.prize
+        prize_month_before6 += assignment.tip
+        sum_month_before6.append(prize_month_before6)
+
+    chart_data = [sum(sum_month), sum(sum_month_before), sum(sum_month_before2), sum(sum_month_before3), sum(sum_month_before4), sum(sum_month_before5), sum(sum_month_before6)]
+    chart_data.reverse()
+# ----------------------------- END chart -----------------------------
+   
+    return render(request, 'dashboard/home.html', {"assignments": assignments, "sum_day": sum(sum_day), "sum_month": sum(sum_month), 'month_sum_before':sum(sum_month_before), 'day_sum_before':sum(sum_day_before), "sum": chart_data})
 
 @login_required(login_url="/login")
 def services(request):
     if request.method == "POST":
         form = ServiceFrom(request.POST)
-        form.save()
-        return redirect("/services")
+        if form.is_valid():
+            form.save()
+            return redirect("/services")
     else:
         form = ServiceFrom()
     
@@ -172,7 +227,6 @@ def summary(request):
         try:
             month = request.POST['Month']
             day= request.POST['Day']
-
             assignments_day = AssingmentModel.objects.filter(created_at__day = day)
             assignments_month = AssingmentModel.objects.filter(created_at__month = month)
 
@@ -228,3 +282,86 @@ def transactions(request):
     assignments = AssingmentModel.objects.all()
     return render(request, 'dashboard/transactions.html', {"assignments": assignments})
 
+@login_required(login_url="/login")
+def transactions_filter(request):
+    from django.http import JsonResponse
+    try:
+        assignments_service = AssingmentModel.objects.values_list('service__name')
+        assignments_tip = AssingmentModel.objects.values_list('tip')
+        assignments_duration = AssingmentModel.objects.values_list('service__time')
+        assignments_ca = AssingmentModel.objects.values_list('created_at')
+
+        service_prize = AssingmentModel.objects.values_list('service__prize')
+        outcome_pairs = list(zip(service_prize, assignments_tip))
+        outcome = []
+        for pair in outcome_pairs:
+            oc = pair[0][0]+pair[1][0]
+            outcome.append(oc)
+
+        assignments_list = list(zip(assignments_service, assignments_duration, assignments_ca, assignments_tip, outcome))
+        return JsonResponse({'transactions_service': assignments_list})
+    except ServiceModel.DoesNotExist:
+        return JsonResponse({'status':'Fail', 'msg': 'Object does not exist'})
+
+@login_required(login_url="/login")
+def barbers(request):
+    if request.method == "POST":
+        form = BarberFrom(request.POST)
+        form.save()
+        return redirect("/barbers")
+    else:
+        form = BarberFrom()
+
+    barbers = BarberModel.objects.all()
+    profits = []
+    barber_profits = ()
+
+    for barber in barbers:
+        barber_transactions = AssingmentModel.objects.filter(employee_id = barber.id)
+        Sum = 0 #gain from all assignments
+
+        for assignment in barber_transactions:
+            Sum += assignment.service.prize
+            Sum += assignment.tip
+
+        profits.append(Sum)
+        
+    barber_profits = list(zip(barbers,profits))
+    return render(request, 'dashboard/barbers.html', {"form":form, "barber_profits": barber_profits})
+
+def delete_barber(request, pk):
+    from django.http import JsonResponse
+    if request.method=='POST':
+        try:
+            obj = BarberModel.objects.get(id=pk)
+            obj.delete()
+            return JsonResponse({'status':'Success', 'msg': 'save successfully'})
+        except ServiceModel.DoesNotExist:
+            return JsonResponse({'status':'Fail', 'msg': 'Object does not exist'})
+    else:
+         return JsonResponse({'status':'Fail', 'msg':'Not a valid request'})
+
+
+@login_required(login_url="/login")
+def reception(request):
+    if request.method == "POST":
+        form = AssignmentForm(request.POST)
+        form.save()
+        return redirect("/reception")
+    else:
+        form = AssignmentForm()
+
+    assignments = AssingmentModel.objects.all().order_by('-created_at')[:5]    
+    return render(request, 'dashboard/reception.html', {"assignments": assignments, "form": form})
+
+
+@login_required(login_url="/login")
+def sidebar(request):
+    from django.http import JsonResponse
+    try:
+        assignment_count = AssingmentModel.objects.all().count()
+        service_count = ServiceModel.objects.all().count()
+        barber_count = BarberModel.objects.all().count()
+        return JsonResponse({'ac': assignment_count, 'sc': service_count, 'bc': barber_count})
+    except ServiceModel.DoesNotExist:
+        return JsonResponse({'status':'Fail', 'msg': 'Object does not exist'})
