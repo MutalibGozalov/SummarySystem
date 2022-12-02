@@ -73,8 +73,8 @@ def sign_up(request):                                           #///////  53:48 
 @login_required(login_url="/login")
 def dashboard(request):
     assignments = AssingmentModel.objects.all().order_by('-created_at')[:5]
-    Sum = [23, 13, 45, 13, 76, 8, 30]
-
+    for assignment in assignments:
+        print(assignment.created_at)
     now = datetime.now()
     today = now.day
    
@@ -280,7 +280,30 @@ def summary(request):
 @login_required(login_url="/login")
 def transactions(request):
     assignments = AssingmentModel.objects.all()
-    return render(request, 'dashboard/transactions.html', {"assignments": assignments})
+    now = datetime.now()
+    today = now.day
+   
+    assignments_day = AssingmentModel.objects.filter(created_at__day = today)
+
+    month = now.month
+    assignments_month = AssingmentModel.objects.filter(created_at__month = month)
+   
+    sum_month = []
+    sum_day = []
+    prize_day = 0
+    prize_month = 0
+
+    for assignment in assignments_day:
+        prize_day += assignment.service.prize
+        prize_day += assignment.tip
+        sum_day.append(prize_day)
+
+    for assignment in assignments_month:
+        prize_month += assignment.service.prize
+        prize_month += assignment.tip
+        sum_month.append(prize_month)
+
+    return render(request, 'dashboard/transactions.html', {"assignments": assignments, "sum_day": sum(sum_day), "sum_month": sum(sum_month)})
 
 @login_required(login_url="/login")
 def transactions_filter(request):

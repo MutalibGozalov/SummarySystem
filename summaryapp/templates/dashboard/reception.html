@@ -15,13 +15,21 @@
                 <div class="card-body" style="font-size: 15px;">
                     <h5 class="card-title">Recent Transactions <span>| Today</span></h5>
                     <table class="table table-hover">
+                        <tr>
+                            <th>Service</th>
+                            <th>Time</th>
+                            <th>Added</th>
+                            <th>Tip</th>
+                            <th>Outcome</th>
+                         </tr>
                         <tbody style="font-size: 15px;">
                         {% for assignment in assignments %}
                         <tr>
-                        <td>{{assignment.service}}</td>
-                        <td>{{assignment.service.time|to_hm}}</td>
-                        <td>{{assignment.created_at|date:"SHORT_DATE_FORMAT"}}</td>
-                        <td>${{assignment.service.prize}}</td>
+                            <td>{{assignment.service}}</td>
+                            <td>{{assignment.service.time|to_hm}}</td>
+                            <td>{{assignment.created_at|date:"SHORT_DATE_FORMAT"}}</td>
+                            <td>${{assignment.tip}}</td>
+                            <td>${{assignment|outcome}}</td>
                         </tr>
                         {% endfor %}
                         </tbody>

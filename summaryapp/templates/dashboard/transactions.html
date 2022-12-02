@@ -56,11 +56,11 @@
                         <div class="row align-items-center justify-content-between">
                            {% csrf_token %} 
                            <div class="col-5 px-0 ms-2  border text-center rounded border-primary" ><input type="date" style="height: 40px;" class="form-control" name="today" value="" min="2020-01-01" max="" /></div>
-                           <div id="day_sum" class="col-6 border text-center rounded border-primary" style="height: 40px; padding-top: 9px;">$ 5.930</div>
+                           <div id="day_sum" class="col-6 border text-center rounded border-primary" style="height: 40px; padding-top: 9px;">$ {{sum_day}}</div>
                         </div>
                         <div class="row align-items-center pt-3 justify-content-between">
                            <div class="col-5 px-0 ms-2 border text-center rounded border-primary"><input type='month' style="height: 40px;" class="form-control" name="month" value="2022-11" min="2010-01" max="" /></div>
-                           <div id="month_sum" class="col-6 border text-center rounded border-primary" style="height: 40px; padding-top: 9px;">$ 44.422</div>
+                           <div id="month_sum" class="col-6 border text-center rounded border-primary" style="height: 40px; padding-top: 9px;">$ {{sum_month}}</div>
                         </div>
                      </div>
                  </div>
