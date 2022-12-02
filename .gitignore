@@ -1,9 +1,2 @@
 db.sqlite3
-summaryapp/templates/dashboard/assets/css/style.css
-summaryapp/templates/dashboard/assets/css/bootstrap-datepicker.css
-summaryapp/templates/dashboard/assets/css/bootstrap-icons.css
-summaryapp/templates/dashboard/assets/css/bootstrap.min.css
-summaryapp/templates/dashboard/assets/css/boxicons.min.css
-summaryapp/templates/dashboard/assets/css/quill.bubble.css
-summaryapp/templates/dashboard/assets/css/remixicon.css
-summaryapp/templates/dashboard/assets/css/simple-datatables.css
+summaryapp/templates/dashboard/assets/css
